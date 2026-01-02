@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de Privacidade - HOUSE Alimentos">
+    <title>Política de Privacidade - HOUSE Alimentos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .privacidade-page {
+            min-height: 100vh;
+            background: var(--bg-color);
+            padding: calc(var(--header-height) + 2rem) 0 4rem;
+        }
+
+        .privacidade-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .privacidade-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .privacidade-header h1 {
+            font-size: 2.5rem;
+            color: var(--title-color);
+            margin-bottom: 1rem;
+        }
+
+        .privacidade-header .last-update {
+            color: var(--text-color-light);
+            font-size: 0.9rem;
+        }
+
+        .privacidade-content {
+            background: var(--bg-color-alt);
+            padding: 3rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .privacidade-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .privacidade-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacidade-section h2 {
+            font-size: 1.5rem;
+            color: var(--title-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .privacidade-section h3 {
+            font-size: 1.2rem;
+            color: var(--title-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .privacidade-section p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .privacidade-section ul, .privacidade-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacidade-section li {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--primary-color-dark);
+            transform: translateX(-5px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .privacidade-header h1 {
+                font-size: 2rem;
+            }
+
+            .privacidade-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .privacidade-section h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="privacidade-page">
+        <div class="privacidade-container">
+            <a href="{{ url_for('index') }}" class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Voltar para o site
+            </a>
+
+            <div class="privacidade-header">
+                <h1>Política de Privacidade</h1>
+                <p class="last-update">Última atualização: {{ current_year }}</p>
+            </div>
+
+            <div class="privacidade-content">
+                <!-- Seção 1: Introdução -->
+                <section class="privacidade-section">
+                    <h2>1. Introdução</h2>
+                    <p>
+                        A <strong>HOUSE Alimentos</strong> ("nós", "nosso" ou "empresa") está comprometida em proteger 
+                        a privacidade e os dados pessoais de seus usuários, clientes e visitantes do site. Esta 
+                        Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas 
+                        informações pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).
+                    </p>
+                    <div class="highlight-box">
+                        <p><strong>Importante:</strong> Ao utilizar nossos serviços e fornecer seus dados pessoais, 
+                        você concorda com os termos desta Política de Privacidade.</p>
+                    </div>
+                </section>
+
+                <!-- Seção 2: Dados Coletados -->
+                <section class="privacidade-section">
+                    <h2>2. Dados Pessoais Coletados</h2>
+                    <p>Coletamos os seguintes tipos de dados pessoais:</p>
+                    
+                    <h3>2.1. Dados Fornecidos por Você</h3>
+                    <ul>
+                        <li><strong>Formulário de Contato:</strong> Nome, e-mail, telefone e mensagem</li>
+                        <li><strong>Formulário Trabalhe Conosco:</strong> Nome, e-mail, telefone, resumo profissional e currículo em PDF</li>
+                        <li><strong>Comunicações:</strong> Informações fornecidas em e-mails, mensagens ou ligações</li>
+                    </ul>
+
+                    <h3>2.2. Dados Coletados Automaticamente</h3>
+                    <ul>
+                        <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador, páginas visitadas, tempo de permanência</li>
+                        <li><strong>Dados de Dispositivo:</strong> Sistema operacional, resolução de tela, tipo de dispositivo</li>
+                        <li><strong>Cookies:</strong> Dados armazenados localmente para melhorar a experiência do usuário</li>
+                    </ul>
+                </section>
+
+                <!-- Seção 3: Finalidade -->
+                <section class="privacidade-section">
+                    <h2>3. Finalidade do Uso dos Dados</h2>
+                    <p>Utilizamos seus dados pessoais para as seguintes finalidades:</p>
+                    <ol>
+                        <li><strong>Responder às suas solicitações:</strong> Processar e responder mensagens de contato</li>
+                        <li><strong>Processos seletivos:</strong> Analisar candidaturas e conduzir processos de recrutamento</li>
+                        <li><strong>Melhorar nossos serviços:</strong> Análise de navegação para otimizar a experiência do usuário</li>
+                        <li><strong>Comunicação:</strong> Enviar informações solicitadas, atualizações e responder dúvidas</li>
+                        <li><strong>Cumprimento legal:</strong> Atender obrigações legais e regulatórias</li>
+                        <li><strong>Segurança:</strong> Prevenir fraudes, abusos e proteger nossos sistemas</li>
+                    </ol>
+                </section>
+
+                <!-- Seção 4: Base Legal -->
+                <section class="privacidade-section">
+                    <h2>4. Base Legal (Art. 7º da LGPD)</h2>
+                    <p>O tratamento de seus dados pessoais está fundamentado nas seguintes bases legais:</p>
+                    <ul>
+                        <li><strong>Consentimento (Art. 7º, I):</strong> Ao preencher nossos formulários e enviar seus dados</li>
+                        <li><strong>Execução de contrato (Art. 7º, V):</strong> Para executar serviços solicitados por você</li>
+                        <li><strong>Legítimo interesse (Art. 7º, IX):</strong> Para melhorar nossos serviços e proteger sistemas</li>
+                        <li><strong>Obrigação legal (Art. 7º, II):</strong> Quando exigido por lei ou autoridade competente</li>
+                    </ul>
+                </section>
+
+                <!-- Seção 5: Compartilhamento -->
+                <section class="privacidade-section">
+                    <h2>5. Compartilhamento de Dados</h2>
+                    <p>Seus dados pessoais <strong>não serão vendidos, alugados ou compartilhados</strong> com terceiros, exceto nas seguintes situações:</p>
+                    <ul>
+                        <li><strong>Prestadores de serviços:</strong> Fornecedores de hospedagem, armazenamento em nuvem e ferramentas técnicas</li>
+                        <li><strong>Obrigação legal:</strong> Quando exigido por ordem judicial, autoridade competente ou lei</li>
+                        <li><strong>Proteção de direitos:</strong> Para proteger nossos direitos legais, segurança ou propriedade</li>
+                        <li><strong>Consentimento:</strong> Com sua autorização expressa para finalidades específicas</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p><strong>Importante:</strong> Todos os terceiros que acessam seus dados são contratualmente obrigados 
+                        a proteger suas informações conforme a LGPD.</p>
+                    </div>
+                </section>
+
+                <!-- Seção 6: Armazenamento -->
+                <section class="privacidade-section">
+                    <h2>6. Armazenamento e Segurança</h2>
+                    
+                    <h3>6.1. Medidas de Segurança</h3>
+                    <p>Implementamos medidas técnicas e organizacionais para proteger seus dados:</p>
+                    <ul>
+                        <li><strong>Criptografia:</strong> Transmissão de dados via HTTPS/SSL</li>
+                        <li><strong>Controle de acesso:</strong> Acesso restrito apenas a pessoal autorizado</li>
+                        <li><strong>Firewall e proteção:</strong> Sistemas de proteção contra acessos não autorizados</li>
+                        <li><strong>Backup:</strong> Cópias de segurança regulares dos dados</li>
+                        <li><strong>Monitoramento:</strong> Vigilância constante de atividades suspeitas</li>
+                        <li><strong>Validação de entrada:</strong> Sanitização de dados para prevenir injeções e ataques</li>
+                    </ul>
+
+                    <h3>6.2. Tempo de Retenção</h3>
+                    <p>Mantemos seus dados pessoais pelo tempo necessário para:</p>
+                    <ul>
+                        <li>Cumprir as finalidades descritas nesta política</li>
+                        <li>Atender obrigações legais e regulatórias</li>
+                        <li>Resolver disputas e fazer cumprir nossos acordos</li>
+                    </ul>
+                    <p><strong>Currículos:</strong> Mantidos por até 2 anos após o envio, salvo consentimento para período maior.</p>
+                    <p><strong>Dados de contato:</strong> Mantidos enquanto houver relacionamento comercial ou interesse legítimo.</p>
+                </section>
+
+                <!-- Seção 7: Direitos do Titular -->
+                <section class="privacidade-section">
+                    <h2>7. Seus Direitos (Art. 18 da LGPD)</h2>
+                    <p>Você tem os seguintes direitos em relação aos seus dados pessoais:</p>
+                    <ol>
+                        <li><strong>Confirmação e acesso:</strong> Saber se tratamos seus dados e acessá-los</li>
+                        <li><strong>Correção:</strong> Corrigir dados incompletos, inexatos ou desatualizados</li>
+                        <li><strong>Anonimização, bloqueio ou eliminação:</strong> Solicitar a exclusão de dados desnecessários ou tratados irregularmente</li>
+                        <li><strong>Portabilidade:</strong> Receber seus dados em formato estruturado e interoperável</li>
+                        <li><strong>Eliminação:</strong> Excluir dados tratados com base no consentimento</li>
+                        <li><strong>Informação sobre compartilhamento:</strong> Saber com quem compartilhamos seus dados</li>
+                        <li><strong>Revogação do consentimento:</strong> Retirar seu consentimento a qualquer momento</li>
+                        <li><strong>Oposição:</strong> Se opor ao tratamento em caso de descumprimento da LGPD</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <p><strong>Para exercer seus direitos, entre em contato:</strong></p>
+                        <ul>
+                            <li>E-mail: housealimentoss@gmail.com</li>
+                            <li>Telefone: (41) 98496-7095</li>
+                            <li>Formulário de contato no site</li>
+                        </ul>
+                        <p>Responderemos sua solicitação em até 15 dias úteis.</p>
+                    </div>
+                </section>
+
+                <!-- Seção 8: Cookies -->
+                <section class="privacidade-section">
+                    <h2>8. Cookies e Tecnologias Similares</h2>
+                    <p>Utilizamos cookies e tecnologias similares para:</p>
+                    <ul>
+                        <li>Melhorar a funcionalidade do site</li>
+                        <li>Analisar padrões de navegação</li>
+                        <li>Personalizar conteúdo e experiência</li>
+                        <li>Lembrar preferências do usuário</li>
+                    </ul>
+                    <p><strong>Tipos de cookies utilizados:</strong></p>
+                    <ul>
+                        <li><strong>Essenciais:</strong> Necessários para o funcionamento do site</li>
+                        <li><strong>Desempenho:</strong> Coletam informações sobre como o site é usado</li>
+                        <li><strong>Funcionais:</strong> Lembram escolhas e preferências</li>
+                    </ul>
+                    <p>Você pode configurar seu navegador para recusar cookies, mas isso pode afetar a funcionalidade do site.</p>
+                </section>
+
+                <!-- Seção 9: Menores de Idade -->
+                <section class="privacidade-section">
+                    <h2>9. Dados de Menores de Idade</h2>
+                    <p>
+                        Nossos serviços são destinados a maiores de 18 anos. Não coletamos intencionalmente dados de 
+                        menores de idade sem o consentimento dos pais ou responsáveis legais. Se identificarmos que 
+                        coletamos dados de menores sem autorização, eliminaremos essas informações imediatamente.
+                    </p>
+                </section>
+
+                <!-- Seção 10: Transferência Internacional -->
+                <section class="privacidade-section">
+                    <h2>10. Transferência Internacional de Dados</h2>
+                    <p>
+                        Sempre que possível, armazenamos seus dados em servidores localizados no Brasil. Caso haja 
+                        necessidade de transferência internacional, garantimos que o país de destino possui nível 
+                        adequado de proteção de dados ou implementamos salvaguardas apropriadas conforme a LGPD.
+                    </p>
+                </section>
+
+                <!-- Seção 11: Alterações -->
+                <section class="privacidade-section">
+                    <h2>11. Alterações nesta Política</h2>
+                    <p>
+                        Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças em nossas 
+                        práticas ou por razões legais. Notificaremos sobre alterações significativas através do site 
+                        ou por e-mail. A data da última atualização estará sempre visível no topo deste documento.
+                    </p>
+                </section>
+
+                <!-- Seção 12: Encarregado de Dados -->
+                <section class="privacidade-section">
+                    <h2>12. Encarregado de Proteção de Dados (DPO)</h2>
+                    <p>
+                        Para questões relacionadas à proteção de dados pessoais, entre em contato com nosso 
+                        Encarregado de Proteção de Dados:
+                    </p>
+                    <div class="highlight-box">
+                        <p><strong>DPO - HOUSE Alimentos</strong></p>
+                        <p>E-mail: housealimentoss@gmail.com</p>
+                        <p>Telefone: (41) 98496-7095</p>
+                        <p>Localização: Fazenda Rio Grande - Curitiba, PR</p>
+                    </div>
+                </section>
+
+                <!-- Seção 13: Autoridade Nacional -->
+                <section class="privacidade-section">
+                    <h2>13. Autoridade Nacional de Proteção de Dados (ANPD)</h2>
+                    <p>
+                        Você também pode entrar em contato com a Autoridade Nacional de Proteção de Dados (ANPD) 
+                        para questões relacionadas aos seus direitos:
+                    </p>
+                    <ul>
+                        <li>Site: <a href="https://www.gov.br/anpd" target="_blank" rel="noopener noreferrer">www.gov.br/anpd</a></li>
+                        <li>Canal de atendimento disponível no site oficial da ANPD</li>
+                    </ul>
+                </section>
+
+                <!-- Seção 14: Legislação -->
+                <section class="privacidade-section">
+                    <h2>14. Legislação e Foro</h2>
+                    <p>
+                        Esta Política de Privacidade é regida pela legislação brasileira, especialmente pela Lei Geral 
+                        de Proteção de Dados (LGPD - Lei nº 13.709/2018), pelo Marco Civil da Internet (Lei nº 12.965/2014) 
+                        e pelo Código de Defesa do Consumidor (Lei nº 8.078/1990).
+                    </p>
+                    <p>
+                        Fica eleito o foro da comarca da sua residência para dirimir quaisquer dúvidas ou controvérsias 
+                        decorrentes desta Política de Privacidade.
+                    </p>
+                </section>
+
+                <!-- Seção 15: Contato -->
+                <section class="privacidade-section">
+                    <h2>15. Dúvidas e Contato</h2>
+                    <p>
+                        Se você tiver dúvidas, preocupações ou sugestões sobre esta Política de Privacidade ou sobre 
+                        como tratamos seus dados pessoais, entre em contato conosco:
+                    </p>
+                    <div class="highlight-box">
+                        <p><strong>HOUSE Alimentos</strong></p>
+                        <p>E-mail: housealimentoss@gmail.com</p>
+                        <p>Telefone: (41) 98496-7095</p>
+                        <p>Localização: Fazenda Rio Grande - Curitiba, PR</p>
+                        <p>Formulário: <a href="{{ url_for('index') }}#contato">Entre em contato pelo site</a></p>
+                    </div>
+                </section>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="{{ url_for('index') }}" class="back-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Voltar para o site
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

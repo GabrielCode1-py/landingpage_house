@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing Page - Soluções profissionais para sua empresa">
+    <meta name="keywords" content="landing page, serviços, profissional">
+    <meta name="author" content="House Bakery & Coffee">
+    <title>House Bakery & Coffee - Panificação Artesanal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Menu Lateral Esquerdo -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <h3 class="sidebar__title">House Alimentos</h3>
+            <button class="sidebar__close" id="sidebar-close" aria-label="Fechar menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar__nav">
+            <ul class="sidebar__list">
+                <li class="sidebar__item">
+                    <a href="#home" class="sidebar__link" data-section="home">
+                        <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        </svg>
+                        <span>Home / Início</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#sobre" class="sidebar__link" data-section="sobre">
+                        <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Quem Somos</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#servicos" class="sidebar__link" data-section="servicos">
+                        <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        <span>Serviços</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#trabalhe-conosco" class="sidebar__link" data-section="trabalhe-conosco">
+                        <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            <line x1="8" y1="11" x2="8" y2="11"></line>
+                            <line x1="12" y1="11" x2="12" y2="11"></line>
+                            <line x1="16" y1="11" x2="16" y2="11"></line>
+                        </svg>
+                        <span>Trabalhe Conosco</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#contato" class="sidebar__link" data-section="contato">
+                        <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>Contato</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar__social">
+                <h4 class="sidebar__social-title">Social</h4>
+                <div class="sidebar__social-links">
+                    <a href="https://www.instagram.com/housecafee_?igsh=Z3V2bjNvMnN0dXNj" target="_blank" rel="noopener noreferrer" class="sidebar__social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://wa.me/5541984967095" target="_blank" rel="noopener noreferrer" class="sidebar__social-link" aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="sidebar__social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Overlay para fechar o menu ao clicar fora -->
+    <div class="sidebar__overlay" id="sidebar-overlay"></div>
+
+    <!-- Botão Hambúrguer (fixo no canto superior esquerdo) -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+    </button>
+
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__brand" id="nav-brand">
+                <a href="#home" class="nav__logo" id="logo-link">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <div class="logo-content">
+                        <span class="logo-text">HOUSE ALIMENTOS</span>
+                        <span class="logo-subtitle">Seja bem-vindo</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Início</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#sobre" class="nav__link">Sobre</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#servicos" class="nav__link">Serviços</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link">Portfólio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contato" class="nav__link">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="nav__close-icon">✕</i>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section / Home -->
+        <section class="hero section" id="home">
+            <div class="hero-carousel" id="hero-carousel">
+                <!-- Slide 1: Imagem com conteúdo -->
+                <div class="hero-carousel__slide active">
+                    <div class="hero-carousel__media">
+                        <img src="{{ url_for('static', filename='images/hero-bakery.jpg') }}" alt="House Bakery & Coffee - Produtos Artesanais" class="hero-carousel__img" loading="eager">
+                        <div class="hero-carousel__overlay"></div>
+                    </div>
+                    <div class="hero-carousel__content container">
+                        <span class="hero-carousel__subtitle">Bem-vindo à House Bakery & Coffee</span>
+                        <h1 class="hero-carousel__title">
+                            Sabor <span class="text-gradient">Artesanal</span> e Tradição
+                        </h1>
+                        <p class="hero-carousel__description">
+                            Produtos fresquinhos feitos diariamente com muito carinho e ingredientes selecionados.
+                        </p>
+                        <div class="hero-carousel__buttons">
+                            <a href="#contato" class="button button-primary">
+                                Faça seu Pedido
+                            </a>
+                            <a href="#sobre" class="button button-secondary">
+                                Conheça Nossa História
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Vídeo ou GIF -->
+                <div class="hero-carousel__slide">
+                    <div class="hero-carousel__media">
+                        <img src="{{ url_for('static', filename='images/hero-bakery2.jpg') }}" alt="Pães e Bolos Artesanais" class="hero-carousel__img" loading="lazy">
+                        <div class="hero-carousel__overlay"></div>
+                    </div>
+                    <div class="hero-carousel__content container">
+                        <span class="hero-carousel__subtitle">Qualidade Artesanal</span>
+                        <h1 class="hero-carousel__title">
+                            Pães <span class="text-gradient">Fresquinhos</span> Todo Dia
+                        </h1>
+                        <p class="hero-carousel__description">
+                            Do forno para sua mesa, produtos preparados com carinho e ingredientes selecionados.
+                        </p>
+                        <div class="hero-carousel__buttons">
+                            <a href="#servicos" class="button button-primary">
+                                Nossos Produtos
+                            </a>
+                            <a href="#portfolio" class="button button-secondary">
+                                Ver Galeria
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Imagem de impacto -->
+                <div class="hero-carousel__slide">
+                    <div class="hero-carousel__media">
+                        <img src="{{ url_for('static', filename='images/hero-bakery3.jpg') }}" alt="Doces e Bolos Especiais" class="hero-carousel__img" loading="lazy">
+                        <div class="hero-carousel__overlay"></div>
+                    </div>
+                    <div class="hero-carousel__content container">
+                        <span class="hero-carousel__subtitle">Tradição e Sabor</span>
+                        <h1 class="hero-carousel__title">
+                            Feito com <span class="text-gradient">Amor</span>
+                        </h1>
+                        <p class="hero-carousel__description">
+                            Anos de tradição em panificação artesanal, servindo nossa comunidade com dedicação.
+                        </p>
+                        <div class="hero-carousel__buttons">
+                            <a href="#contato" class="button button-primary">
+                                Entre em Contato
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controles do Carrossel -->
+                <button class="hero-carousel__arrow hero-carousel__arrow--prev" id="hero-prev" aria-label="Slide anterior">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="hero-carousel__arrow hero-carousel__arrow--next" id="hero-next" aria-label="Próximo slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Indicadores -->
+                <div class="hero-carousel__indicators" id="hero-indicators">
+                    <button class="hero-carousel__indicator active" data-slide="0" aria-label="Ir para slide 1"></button>
+                    <button class="hero-carousel__indicator" data-slide="1" aria-label="Ir para slide 2"></button>
+                    <button class="hero-carousel__indicator" data-slide="2" aria-label="Ir para slide 3"></button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="hero-carousel__progress">
+                    <div class="hero-carousel__progress-bar" id="hero-progress"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section / Quem Somos -->
+        <section class="sobre section" id="sobre">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Quem Somos</span>
+                    <h2 class="section__title">Conheça Nossa História</h2>
+                    <p class="section__description">
+                        Uma trajetória de dedicação, inovação e excelência na arte da panificação artesanal
+                    </p>
+                </div>
+
+                <!-- História da Empresa -->
+                <article class="sobre__historia">
+                    <div class="sobre__historia-content">
+                        <div class="sobre__historia-text">
+                            <h3 class="sobre__historia-title">
+                                <svg class="sobre__historia-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                                Nossa Jornada
+                            </h3>
+                            <p class="sobre__historia-description">
+                                Fundada em <strong>2010</strong>, a <strong>HOUSE <span style="font-size: 0.8em; display: block; margin-top: -8px;">Alimentos</span></strong> nasceu do sonho de levar sabor e qualidade 
+                                à mesa das famílias brasileiras. Ao longo desses <strong>16 anos</strong>, enfrentamos desafios, 
+                                superamos crises e crescemos com resiliência, sempre mantendo nossa essência artesanal 
+                                e o compromisso inabalável com a excelência.
+                            </p>
+                            <p class="sobre__historia-description">
+                                Nosso propósito é simples, mas poderoso: <strong>entregar o melhor produto para nossos consumidores</strong>. 
+                                Do pão francês crocante às massas macias, cada receita é preparada com dedicação e paixão, 
+                                utilizando sempre as <strong>melhores matérias-primas do mercado</strong>. Porque acreditamos que 
+                                nossos clientes merecem nada menos que a perfeição em cada mordida.
+                            </p>
+                            <p class="sobre__historia-description">
+                                Hoje, com orgulho, continuamos nossa trajetória, produzindo diariamente produtos que aquecem 
+                                corações, reúnem famílias e marcam momentos especiais. Nossa história é feita de farinha, 
+                                amor e muita determinação.
+                            </p>
+                        </div>
+                        <div class="sobre__historia-image">
+                            <img src="{{ url_for('static', filename='images/about-history.jpg') }}" alt="História da HOUSE Alimentos" class="sobre__img" loading="lazy">
+                            <div class="sobre__badge">
+                                <span class="sobre__badge-number">16+</span>
+                                <span class="sobre__badge-text">Anos de Tradição</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Valores e Missão -->
+                <article class="sobre__valores">
+                    <div class="sobre__valores-grid">
+                        <div class="sobre__valor-card">
+                            <div class="sobre__valor-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                                </svg>
+                            </div>
+                            <h4 class="sobre__valor-title">Missão</h4>
+                            <p class="sobre__valor-text">
+                                Produzir alimentos de qualidade excepcional que encantam o paladar e nutrem o corpo, 
+                                levando tradição e sabor artesanal para cada família brasileira.
+                            </p>
+                        </div>
+
+                        <div class="sobre__valor-card">
+                            <div class="sobre__valor-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="sobre__valor-title">Visão</h4>
+                            <p class="sobre__valor-text">
+                                Ser referência nacional em panificação artesanal, reconhecida pela excelência, 
+                                inovação em receitas tradicionais e compromisso com a satisfação dos nossos clientes.
+                            </p>
+                        </div>
+
+                        <div class="sobre__valor-card">
+                            <div class="sobre__valor-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                            <h4 class="sobre__valor-title">Valores</h4>
+                            <p class="sobre__valor-text">
+                                Qualidade sem Concessões, Tradição Artesanal, Compromisso com o Cliente, 
+                                Ingredientes Selecionados e Paixão pelo que Fazemos.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Estatísticas -->
+                <article class="sobre__stats">
+                    <div class="sobre__stats-grid">
+                        <div class="sobre__stat">
+                            <div class="sobre__stat-number" data-target="16">0</div>
+                            <div class="sobre__stat-label">Anos de Tradição</div>
+                        </div>
+                        <div class="sobre__stat">
+                            <div class="sobre__stat-number" data-target="1000">0</div>
+                            <div class="sobre__stat-label">Clientes Satisfeitos</div>
+                        </div>
+                        <div class="sobre__stat">
+                            <div class="sobre__stat-number" data-target="50">0</div>
+                            <div class="sobre__stat-label">Produtos Diários</div>
+                        </div>
+                        <div class="sobre__stat">
+                            <div class="sobre__stat-number" data-target="100">0</div>
+                            <div class="sobre__stat-label">% Artesanal</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="servicos section" id="servicos">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Nossos Produtos</span>
+                    <h2 class="section__title">Produtos Artesanais</h2>
+                    <p class="section__description">
+                        Qualidade, sabor e tradição em cada produto que preparamos
+                    </p>
+                </div>
+
+                <div class="servicos__container">
+                    <article class="servico__card">
+                        <div class="servico__icon">
+                            🥖
+                        </div>
+                        <h3 class="servico__title">Pão Francês</h3>
+                        <p class="servico__description">
+                            O clássico brasileiro! Crocante por fora, macio por dentro. Feito diariamente com massa fermentada e assado no ponto perfeito. Ingredientes selecionados garantem frescor e sabor inigualável. Ideal para o café da manhã ou lanche da tarde.
+                        </p>
+                    </article>
+
+                    <article class="servico__card">
+                        <div class="servico__icon">
+                            🍩
+                        </div>
+                        <h3 class="servico__title">Chineques</h3>
+                        <p class="servico__description">
+                            Deliciosos pães em formato de rosquinha, macios e levemente adocicados. Uma receita tradicional que conquista todas as gerações. Perfeito para acompanhar café ou chá. Textura única e sabor que remete à infância.
+                        </p>
+                    </article>
+
+                    <article class="servico__card">
+                        <div class="servico__icon">
+                            🍞
+                        </div>
+                        <h3 class="servico__title">Pão Caseiro</h3>
+                        <p class="servico__description">
+                            Pão artesanal com receita tradicional de família. Massa leve, sabor incomparável e aroma que perfuma toda a casa. Ideal para sanduíches ou acompanhar refeições. Feito com ingredientes naturais, sem conservantes artificiais.
+                        </p>
+                    </article>
+
+                    <article class="servico__card">
+                        <div class="servico__icon">
+                            🥛
+                        </div>
+                        <h3 class="servico__title">Pão de Leite</h3>
+                        <p class="servico__description">
+                            Macio, levemente adocicado e extremamente fofo. Rico em leite, proporciona uma experiência única ao paladar. Perfeito para crianças e adultos. Excelente para lanches ou café da manhã especial. Uma opção nutritiva e deliciosa.
+                        </p>
+                    </article>
+
+                    <article class="servico__card">
+                        <div class="servico__icon">
+                            🥐
+                        </div>
+                        <h3 class="servico__title">Cueca Virada</h3>
+                        <p class="servico__description">
+                            Doce tradicional brasileiro frito e polvilhado com açúcar e canela. Crocante, saboroso e irresistível. Uma delícia típica das festas juninas disponível o ano todo. Receita artesanal que preserva o sabor original da tradição.
+                        </p>
+                    </article>
+
+                    <article class="servico__card">
+                        <div class="servico__icon">
+                            🍔
+                        </div>
+                        <h3 class="servico__title">Pão de Hambúrguer</h3>
+                        <p class="servico__description">
+                            Especialmente desenvolvido para hambúrgueres gourmet. Massa macia com gergelim, perfeita para suportar recheios generosos. Textura equilibrada que não desmancha. Ideal para churrascos e lanches especiais. Qualidade de padariaartesanal.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio / Carousel Section -->
+        <section class="portfolio section" id="portfolio">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Nossos Trabalhos</span>
+                    <h2 class="section__title">Portfólio</h2>
+                </div>
+
+                <div class="carousel">
+                    <div class="carousel__container">
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-bakery.jpg') }}" alt="Produtos da Padaria" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Chineques Sabores</h3>
+                                <p class="carousel__description">Qualidade e sabor em cada detalhe</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-bakery2.jpg') }}" alt="Pães Fresquinhos" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Cuecas Viradas</h3>
+                                <p class="carousel__description">Tradição e frescor diário</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-3.jpg') }}" alt="Projeto 3" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Pães Caseiros</h3>
+                                <p class="carousel__description">Sabor irresistível e qualidade</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel__button carousel__button--prev" aria-label="Anterior">‹</button>
+                    <button class="carousel__button carousel__button--next" aria-label="Próximo">›</button>
+                    <div class="carousel__indicators"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trabalhe Conosco Section -->
+        <section class="trabalhe-conosco section" id="trabalhe-conosco">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Faça Parte do Time</span>
+                    <h2 class="section__title">Trabalhe Conosco</h2>
+                </div>
+
+                <div class="trabalhe-conosco__container">
+                    <div class="trabalhe-conosco__info">
+                        <h3 class="trabalhe-conosco__info-title">Junte-se à Nossa Equipe!</h3>
+                        <p class="trabalhe-conosco__info-description">
+                            Estamos sempre em busca de talentos que compartilhem nossa paixão por inovação e 
+                            excelência. Se você é criativo, comprometido e quer fazer a diferença, queremos 
+                            conhecê-lo!
+                        </p>
+
+                        <div class="trabalhe-conosco__benefits">
+                            <h4 class="trabalhe-conosco__benefits-title">Por que trabalhar conosco?</h4>
+                            <ul class="trabalhe-conosco__benefits-list">
+                                <li class="trabalhe-conosco__benefit-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Ambiente colaborativo e inovador</span>
+                                </li>
+                                <li class="trabalhe-conosco__benefit-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Oportunidades de crescimento</span>
+                                </li>
+                                <li class="trabalhe-conosco__benefit-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Projetos desafiadores</span>
+                                </li>
+                                <li class="trabalhe-conosco__benefit-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Benefícios competitivos</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <form id="trabalheConoscoForm" class="trabalhe-conosco__form form" novalidate>
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                        <div class="form__group">
+                            <label for="candidato-nome" class="form__label">Nome Completo *</label>
+                            <input 
+                                type="text" 
+                                id="candidato-nome" 
+                                name="nome" 
+                                class="form__input" 
+                                placeholder="Seu nome completo"
+                                required
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="candidato-email" class="form__label">E-mail *</label>
+                            <input 
+                                type="email" 
+                                id="candidato-email" 
+                                name="email" 
+                                class="form__input" 
+                                placeholder="seu@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="candidato-telefone" class="form__label">Telefone *</label>
+                            <input 
+                                type="tel" 
+                                id="candidato-telefone" 
+                                name="telefone" 
+                                class="form__input" 
+                                placeholder="(00) 00000-0000"
+                                required
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="candidato-resumo" class="form__label">Resumo Profissional *</label>
+                            <textarea 
+                                id="candidato-resumo" 
+                                name="resumo" 
+                                class="form__textarea" 
+                                placeholder="Conte-nos sobre sua experiência profissional, habilidades e objetivos..."
+                                rows="6"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form__group form__group--file">
+                            <label for="candidato-curriculo" class="form__label">Currículo (PDF) *</label>
+                            <div class="form__file-wrapper">
+                                <input 
+                                    type="file" 
+                                    id="candidato-curriculo" 
+                                    name="curriculo" 
+                                    class="form__file-input" 
+                                    accept=".pdf"
+                                    required
+                                >
+                                <label for="candidato-curriculo" class="form__file-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <span class="form__file-text">Selecione seu currículo em PDF</span>
+                                </label>
+                                <span class="form__file-name"></span>
+                            </div>
+                            <small class="form__helper">Apenas arquivos PDF com no máximo 5MB</small>
+                        </div>
+
+                        <button type="submit" class="button button-primary form__button">
+                            Enviar Candidatura
+                        </button>
+
+                        <div id="trabalheConoscoFeedback" class="form__feedback"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contato section" id="contato">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Fale Conosco</span>
+                    <h2 class="section__title">Entre em Contato</h2>
+                </div>
+
+                <div class="contato__container">
+                    <div class="contato__info">
+                        <h3 class="contato__info-title">Vamos conversar sobre seu projeto!</h3>
+                        <p class="contato__info-description">
+                            Preencha o formulário ao lado ou entre em contato através de nossos canais. 
+                            Responderemos o mais breve possível.
+                        </p>
+                        
+                        <div class="contato__details">
+                            <div class="contato__detail">
+                                <i class="contato__icon">📧</i>
+                                <div>
+                                    <h4 class="contato__detail-title">Email</h4>
+                                    <p class="contato__detail-text">housealimentoss@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contato__detail">
+                                <i class="contato__icon">📱</i>
+                                <div>
+                                    <h4 class="contato__detail-title">Telefone</h4>
+                                    <p class="contato__detail-text">(41) 98496-7095</p>
+                                </div>
+                            </div>
+                            <div class="contato__detail">
+                                <i class="contato__icon">📍</i>
+                                <div>
+                                    <h4 class="contato__detail-title">Localização</h4>
+                                    <p class="contato__detail-text">Fazenda Rio Grande - Curitiba, PR</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Section -->
+                        <div class="upload__section">
+                            <h4 class="upload__title">Envie um Documento (PDF)</h4>
+                            <form id="uploadForm" class="upload__form">
+                                <input type="file" id="fileInput" name="file" accept=".pdf" class="upload__input">
+                                <label for="fileInput" class="upload__label">
+                                    <span class="upload__icon">📄</span>
+                                    <span class="upload__text">Escolher arquivo PDF</span>
+                                </label>
+                                <button type="submit" class="button button-primary upload__button">Enviar Arquivo</button>
+                            </form>
+                            <div id="uploadFeedback" class="upload__feedback"></div>
+                        </div>
+                    </div>
+
+                    <form id="contactForm" class="contato__form">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                        <div class="form__group">
+                            <label for="nome" class="form__label">Nome Completo *</label>
+                            <input 
+                                type="text" 
+                                id="nome" 
+                                name="nome" 
+                                class="form__input" 
+                                placeholder="Seu nome"
+                                required
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="email" class="form__label">E-mail *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form__input" 
+                                placeholder="seu@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="telefone" class="form__label">Telefone</label>
+                            <input 
+                                type="tel" 
+                                id="telefone" 
+                                name="telefone" 
+                                class="form__input" 
+                                placeholder="(00) 00000-0000"
+                            >
+                        </div>
+
+                        <div class="form__group">
+                            <label for="mensagem" class="form__label">Mensagem *</label>
+                            <textarea 
+                                id="mensagem" 
+                                name="mensagem" 
+                                class="form__textarea" 
+                                placeholder="Conte-nos sobre seu projeto..."
+                                rows="5"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="button button-primary form__button">
+                            Enviar Mensagem
+                        </button>
+
+                        <div id="formFeedback" class="form__feedback"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__container">
+                <div class="footer__content">
+                    <h3 class="footer__title">HOUSE Alimentos</h3>
+                    <p class="footer__description">
+                        Sabor artesanal, qualidade e tradição desde 2010.
+                    </p>
+                </div>
+
+                <div class="footer__content">
+                    <h4 class="footer__subtitle">Links Rápidos</h4>
+                    <ul class="footer__links">
+                        <li><a href="#home" class="footer__link">Início</a></li>
+                        <li><a href="#sobre" class="footer__link">Sobre</a></li>
+                        <li><a href="#servicos" class="footer__link">Serviços</a></li>
+                        <li><a href="#trabalhe-conosco" class="footer__link">Trabalhe Conosco</a></li>
+                        <li><a href="#contato" class="footer__link">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__content">
+                    <h4 class="footer__subtitle">Redes Sociais</h4>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/housecafee_?igsh=Z3V2bjNvMnN0dXNj" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/5541984967095" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__copy">
+                <p>&copy; {{ current_year }} HOUSE Alimentos. Todos os direitos reservados.</p>
+                <p class="footer__legal">
+                    <a href="{{ url_for('privacidade') }}" class="footer__link footer__link--legal">Política de Privacidade</a> | 
+                    Protegido pela LGPD (Lei nº 13.709/2018)
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top" aria-label="Voltar ao topo">↑</button>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner__content">
+            <div class="cookie-banner__text">
+                <h3 class="cookie-banner__title">🍪 Usamos Cookies</h3>
+                <p class="cookie-banner__description">
+                    Utilizamos cookies essenciais para garantir o funcionamento adequado do site e cookies de desempenho 
+                    para melhorar sua experiência. Ao continuar navegando, você concorda com nossa 
+                    <a href="{{ url_for('privacidade') }}" class="cookie-banner__link">Política de Privacidade</a>.
+                </p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button class="cookie-banner__button cookie-banner__button--settings" id="cookieSettings">
+                    Configurar
+                </button>
+                <button class="cookie-banner__button cookie-banner__button--accept" id="cookieAccept">
+                    Aceitar Todos
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal__overlay" id="cookieModalOverlay"></div>
+        <div class="cookie-modal__content">
+            <div class="cookie-modal__header">
+                <h2 class="cookie-modal__title">Configurações de Cookies</h2>
+                <button class="cookie-modal__close" id="cookieModalClose" aria-label="Fechar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="cookie-modal__body">
+                <p class="cookie-modal__intro">
+                    Respeitamos sua privacidade. Escolha quais tipos de cookies você permite que usemos.
+                </p>
+
+                <div class="cookie-option">
+                    <div class="cookie-option__header">
+                        <label class="cookie-option__label">
+                            <input type="checkbox" checked disabled class="cookie-option__checkbox">
+                            <span class="cookie-option__title">Cookies Essenciais</span>
+                            <span class="cookie-option__badge">Obrigatório</span>
+                        </label>
+                    </div>
+                    <p class="cookie-option__description">
+                        Necessários para o funcionamento básico do site. Não podem ser desativados.
+                    </p>
+                </div>
+
+                <div class="cookie-option">
+                    <div class="cookie-option__header">
+                        <label class="cookie-option__label">
+                            <input type="checkbox" id="cookiePerformance" class="cookie-option__checkbox">
+                            <span class="cookie-option__title">Cookies de Desempenho</span>
+                        </label>
+                    </div>
+                    <p class="cookie-option__description">
+                        Coletam informações sobre como você usa o site para melhorar sua experiência.
+                    </p>
+                </div>
+
+                <div class="cookie-option">
+                    <div class="cookie-option__header">
+                        <label class="cookie-option__label">
+                            <input type="checkbox" id="cookieAnalytics" class="cookie-option__checkbox">
+                            <span class="cookie-option__title">Cookies de Análise</span>
+                        </label>
+                    </div>
+                    <p class="cookie-option__description">
+                        Nos ajudam a entender como os visitantes interagem com o site através de dados anônimos.
+                    </p>
+                </div>
+            </div>
+            <div class="cookie-modal__footer">
+                <button class="cookie-modal__button cookie-modal__button--secondary" id="cookieRejectAll">
+                    Apenas Essenciais
+                </button>
+                <button class="cookie-modal__button cookie-modal__button--primary" id="cookieSaveSettings">
+                    Salvar Preferências
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+</body>
+</html>
