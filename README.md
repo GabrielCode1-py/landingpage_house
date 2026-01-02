@@ -420,9 +420,9 @@ Este projeto é de uso livre para fins educacionais e comerciais.
 ## 📞 Suporte
 
 - **Issues**: Abra uma issue no GitHub
-- **Email**: contato@landinghouse.com.br
-- **Privacidade**: privacidade@landinghouse.com.br
-- **DPO**: dpo@landinghouse.com.br
+- **Email**: dev.gabrielbatista2004@gmail.com
+- **Privacidade**: dev.gabrielbatista2004@gmail.com
+- **DPO**: dev.gabrielbatista2004@gmail.com
 
 ---
 
