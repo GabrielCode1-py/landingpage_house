@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "HOUSE Alimentos",
+  "image": "https://housealimentos2026.pythonanywhere.com/static/images/hero-bakery.jpg",
+  "@id": "https://housealimentos2026.pythonanywhere.com",
+  "url": "https://housealimentos2026.pythonanywhere.com",
+  "telephone": "+55-41-98496-7095",
+  "email": "housealimentoss@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Fazenda Rio Grande",
+    "addressLocality": "Curitiba",
+    "addressRegion": "PR",
+    "addressCountry": "BR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -25.6523,
+    "longitude": -49.2998
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "06:00",
+    "closes": "19:00"
+  },
+  "sameAs": [
+    "https://www.instagram.com/housealimentos"
+  ],
+  "priceRange": "$$",
+  "servesCuisine": "Padaria Artesanal",
+  "foundingDate": "2010"
+}

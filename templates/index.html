@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Landing Page - Soluções profissionais para sua empresa">
-    <meta name="keywords" content="landing page, serviços, profissional">
-    <meta name="author" content="House Bakery & Coffee">
-    <title>House Bakery & Coffee - Panificação Artesanal</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="HOUSE Alimentos - Panificadora artesanal em Fazenda Rio Grande, Curitiba. Pão francês, pão caseiro, pão de leite e produtos de qualidade desde 2010.">
+    <meta name="keywords" content="house alimentos, panificadora fazenda rio grande, padaria curitiba, pão artesanal, pão francês, pão caseiro, pão de leite, chineques, cueca virada, panificadora, bakery">
+    <meta name="author" content="HOUSE Alimentos">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://housealimentos2026.pythonanywhere.com/">
+    <meta property="og:title" content="HOUSE Alimentos - Panificação Artesanal">
+    <meta property="og:description" content="Panificadora artesanal em Fazenda Rio Grande. Produtos frescos e de qualidade desde 2010.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/hero-bakery.jpg', _external=True) }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://housealimentos2026.pythonanywhere.com/">
+    <meta property="twitter:title" content="HOUSE Alimentos - Panificação Artesanal">
+    <meta property="twitter:description" content="Panificadora artesanal em Fazenda Rio Grande. Produtos frescos e de qualidade desde 2010.">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/hero-bakery.jpg', _external=True) }}">
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="BR-PR">
+    <meta name="geo.placename" content="Fazenda Rio Grande">
+    <meta name="geo.position" content="-25.6523;-49.2998">
+    
+    <title>HOUSE Alimentos - Panificadora Artesanal em Fazenda Rio Grande | Pão Fresco e Produtos de Qualidade</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
