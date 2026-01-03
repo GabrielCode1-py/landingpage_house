@@ -278,6 +278,19 @@ def not_found(e):
     return render_template('index.html', current_year=datetime.now().year), 404
 
 
+# ===========================
+# GOOGLE VERIFICATION
+# ===========================
+
+@app.route('/google<path:filename>.html')
+def google_verification(filename):
+    """Serve Google Search Console verification file"""
+    try:
+        return app.send_static_file(f'google{filename}.html')
+    except:
+        return "File not found", 404
+
+
 @app.errorhandler(429)
 def rate_limit_exceeded(e):
     return jsonify({
