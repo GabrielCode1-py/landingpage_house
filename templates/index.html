@@ -30,9 +30,11 @@
     <meta name="geo.position" content="-25.6523;-49.2998">
     
     <title>HOUSE Alimentos - Panificadora Artesanal em Fazenda Rio Grande | Pão Fresco e Produtos de Qualidade</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=2.1">
 </head>
 <body>
+    <!-- Background Animado -->
+    <div class="animated-background"></div>
     <!-- Menu Lateral Esquerdo -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar__header">
@@ -139,10 +141,13 @@
         <nav class="nav container">
             <div class="nav__brand" id="nav-brand">
                 <a href="#home" class="nav__logo" id="logo-link">
-                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
+                    <div class="logo-icon-wrapper">
+                        <img src="{{ url_for('static', filename='images/wheat-wreath.png') }}" alt="Wheat Wreath" class="wheat-wreath">
+                        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
                     <div class="logo-content">
                         <span class="logo-text">HOUSE ALIMENTOS</span>
                         <span class="logo-subtitle">Seja bem-vindo</span>
@@ -168,16 +173,6 @@
                         <a href="#contato" class="nav__link">Contato</a>
                     </li>
                 </ul>
-
-                <div class="nav__close" id="nav-close">
-                    <i class="nav__close-icon">✕</i>
-                </div>
-            </div>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <span class="nav__toggle-bar"></span>
-                <span class="nav__toggle-bar"></span>
-                <span class="nav__toggle-bar"></span>
             </div>
         </nav>
     </header>
@@ -422,64 +417,132 @@
                 </div>
 
                 <div class="servicos__container">
-                    <article class="servico__card">
-                        <div class="servico__icon">
-                            🥖
+                    <article class="servico__card" data-produto="pao-frances">
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🥖
+                                </div>
+                                <h3 class="servico__title">Pão Francês</h3>
+                                <p class="servico__description">
+                                    O clássico brasileiro! Crocante por fora, macio por dentro. Feito diariamente com massa fermentada e assado no ponto perfeito. Ingredientes selecionados garantem frescor e sabor inigualável. Ideal para o café da manhã ou lanche da tarde.
+                                </p>
+                                <span class="servico__hint">Clique para ver a foto</span>
+                            </div>
+                            <div class="servico__card-back">
+                                <img src="{{ url_for('static', filename='images/produto-pao-frances.jpeg') }}" alt="Pão Francês" class="servico__image">
+                                <h3 class="servico__back-title">Pão Francês</h3>
+                            </div>
                         </div>
-                        <h3 class="servico__title">Pão Francês</h3>
-                        <p class="servico__description">
-                            O clássico brasileiro! Crocante por fora, macio por dentro. Feito diariamente com massa fermentada e assado no ponto perfeito. Ingredientes selecionados garantem frescor e sabor inigualável. Ideal para o café da manhã ou lanche da tarde.
-                        </p>
+                    </article>
+
+                    <article class="servico__card" data-produto="chineques">
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🍩
+                                </div>
+                                <h3 class="servico__title">Chineques</h3>
+                                <p class="servico__description">
+                                    Deliciosos pães em formato de rosquinha, macios e levemente adocicados. Uma receita tradicional que conquista todas as gerações. Perfeito para acompanhar café ou chá. Textura única e sabor que remete à infância.
+                                </p>
+                                <span class="servico__hint">Clique para ver a foto</span>
+                            </div>
+                            <div class="servico__card-back">
+                                <img src="{{ url_for('static', filename='images/produto-chineques.jpeg') }}" alt="Chineques" class="servico__image">
+                                <h3 class="servico__back-title">Chineques</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="servico__card" data-produto="pao-caseiro">
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🍞
+                                </div>
+                                <h3 class="servico__title">Pão Caseiro</h3>
+                                <p class="servico__description">
+                                    Pão artesanal com receita tradicional de família. Massa leve, sabor incomparável e aroma que perfuma toda a casa. Ideal para sanduíches ou acompanhar refeições. Feito com ingredientes naturais, sem conservantes artificiais.
+                                </p>
+                                <span class="servico__hint">Clique para ver a foto</span>
+                            </div>
+                            <div class="servico__card-back">
+                                <img src="{{ url_for('static', filename='images/produto-pao-caseiro.jpeg') }}" alt="Pão Caseiro" class="servico__image">
+                                <h3 class="servico__back-title">Pão Caseiro</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="servico__card" data-produto="pao-leite">
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🥛
+                                </div>
+                                <h3 class="servico__title">Pão de Leite</h3>
+                                <p class="servico__description">
+                                    Macio, levemente adocicado e extremamente fofo. Rico em leite, proporciona uma experiência única ao paladar. Perfeito para crianças e adultos. Excelente para lanches ou café da manhã especial. Uma opção nutritiva e deliciosa.
+                                </p>
+                                <span class="servico__hint">Clique para ver a foto</span>
+                            </div>
+                            <div class="servico__card-back">
+                                <img src="{{ url_for('static', filename='images/produto-pao-leite.jpeg') }}" alt="Pão de Leite" class="servico__image">
+                                <h3 class="servico__back-title">Pão de Leite</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="servico__card" data-produto="cueca-virada">
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🥐
+                                </div>
+                                <h3 class="servico__title">Cueca Virada</h3>
+                                <p class="servico__description">
+                                    Doce tradicional brasileiro frito e polvilhado com açúcar e canela. Crocante, saboroso e irresistível. Uma delícia típica das festas juninas disponível o ano todo. Receita artesanal que preserva o sabor original da tradição.
+                                </p>
+                                <span class="servico__hint">Clique para ver a foto</span>
+                            </div>
+                            <div class="servico__card-back">
+                                <img src="{{ url_for('static', filename='images/produto-cueca-virada.jpeg') }}" alt="Cueca Virada" class="servico__image">
+                                <h3 class="servico__back-title">Cueca Virada</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="servico__card" data-produto="cucas">
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🥧
+                                </div>
+                                <h3 class="servico__title">Cucas Recheadas</h3>
+                                <p class="servico__description">
+                                    Tradicional cuca alemã com cobertura crocante de farofa e recheios variados. Massas macias e saborosas, perfeitas para o café da tarde. Receitas autênticas passadas de geração em geração. Disponível em diversos sabores como uva, maçã e banana.
+                                </p>
+                                <span class="servico__hint">Clique para ver a foto</span>
+                            </div>
+                            <div class="servico__card-back">
+                                <img src="{{ url_for('static', filename='images/produto-cucas.jpeg') }}" alt="Cucas Recheadas" class="servico__image">
+                                <h3 class="servico__back-title">Cucas Recheadas</h3>
+                            </div>
+                        </div>
                     </article>
 
                     <article class="servico__card">
-                        <div class="servico__icon">
-                            🍩
+                        <div class="servico__card-inner">
+                            <div class="servico__card-front">
+                                <div class="servico__icon">
+                                    🍔
+                                </div>
+                                <h3 class="servico__title">Pão de Hambúrguer</h3>
+                                <p class="servico__description">
+                                    Especialmente desenvolvido para hambúrgueres gourmet. Massa macia com gergelim, perfeita para suportar recheios generosos. Textura equilibrada que não desmancha. Ideal para churrascos e lanches especiais. Qualidade de padaria artesanal.
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="servico__title">Chineques</h3>
-                        <p class="servico__description">
-                            Deliciosos pães em formato de rosquinha, macios e levemente adocicados. Uma receita tradicional que conquista todas as gerações. Perfeito para acompanhar café ou chá. Textura única e sabor que remete à infância.
-                        </p>
-                    </article>
-
-                    <article class="servico__card">
-                        <div class="servico__icon">
-                            🍞
-                        </div>
-                        <h3 class="servico__title">Pão Caseiro</h3>
-                        <p class="servico__description">
-                            Pão artesanal com receita tradicional de família. Massa leve, sabor incomparável e aroma que perfuma toda a casa. Ideal para sanduíches ou acompanhar refeições. Feito com ingredientes naturais, sem conservantes artificiais.
-                        </p>
-                    </article>
-
-                    <article class="servico__card">
-                        <div class="servico__icon">
-                            🥛
-                        </div>
-                        <h3 class="servico__title">Pão de Leite</h3>
-                        <p class="servico__description">
-                            Macio, levemente adocicado e extremamente fofo. Rico em leite, proporciona uma experiência única ao paladar. Perfeito para crianças e adultos. Excelente para lanches ou café da manhã especial. Uma opção nutritiva e deliciosa.
-                        </p>
-                    </article>
-
-                    <article class="servico__card">
-                        <div class="servico__icon">
-                            🥐
-                        </div>
-                        <h3 class="servico__title">Cueca Virada</h3>
-                        <p class="servico__description">
-                            Doce tradicional brasileiro frito e polvilhado com açúcar e canela. Crocante, saboroso e irresistível. Uma delícia típica das festas juninas disponível o ano todo. Receita artesanal que preserva o sabor original da tradição.
-                        </p>
-                    </article>
-
-                    <article class="servico__card">
-                        <div class="servico__icon">
-                            🍔
-                        </div>
-                        <h3 class="servico__title">Pão de Hambúrguer</h3>
-                        <p class="servico__description">
-                            Especialmente desenvolvido para hambúrgueres gourmet. Massa macia com gergelim, perfeita para suportar recheios generosos. Textura equilibrada que não desmancha. Ideal para churrascos e lanches especiais. Qualidade de padariaartesanal.
-                        </p>
                     </article>
                 </div>
             </div>
@@ -510,10 +573,73 @@
                             </div>
                         </div>
                         <div class="carousel__slide">
-                            <img src="{{ url_for('static', filename='images/portfolio-3.jpg') }}" alt="Projeto 3" class="carousel__img">
+                            <img src="{{ url_for('static', filename='images/portfolio-3.jpg') }}" alt="Pães Caseiros" class="carousel__img">
                             <div class="carousel__content">
                                 <h3 class="carousel__title">Pães Caseiros</h3>
                                 <p class="carousel__description">Sabor irresistível e qualidade</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-01.jpeg') }}" alt="Nossa Padaria" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Nossa Padaria</h3>
+                                <p class="carousel__description">Ambiente acolhedor e produtos frescos</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-02.jpeg') }}" alt="Produtos Artesanais" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Produtos Artesanais</h3>
+                                <p class="carousel__description">Qualidade em cada detalhe</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-03.jpeg') }}" alt="Pães Frescos" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Pães Frescos</h3>
+                                <p class="carousel__description">Sabor e tradição</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-04.jpeg') }}" alt="Variedade de Produtos" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Variedade</h3>
+                                <p class="carousel__description">Diversidade de sabores</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-05.jpeg') }}" alt="Doces e Salgados" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Doces e Salgados</h3>
+                                <p class="carousel__description">Para todos os gostos</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-06.jpeg') }}" alt="Produção Diária" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Produção Diária</h3>
+                                <p class="carousel__description">Frescor garantido</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-07.jpeg') }}" alt="Especialidades" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Especialidades</h3>
+                                <p class="carousel__description">Receitas exclusivas</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-08.jpeg') }}" alt="Pães Especiais" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Pães Especiais</h3>
+                                <p class="carousel__description">Artesanalmente preparados</p>
+                            </div>
+                        </div>
+                        <div class="carousel__slide">
+                            <img src="{{ url_for('static', filename='images/portfolio-09.jpeg') }}" alt="Qualidade HOUSE" class="carousel__img">
+                            <div class="carousel__content">
+                                <h3 class="carousel__title">Qualidade HOUSE</h3>
+                                <p class="carousel__description">Tradição e excelência</p>
                             </div>
                         </div>
                     </div>
@@ -916,7 +1042,7 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=2.0"></script>
+    <script src="{{ url_for('static', filename='js/cookies.js') }}?v=2.0"></script>
 </body>
 </html>

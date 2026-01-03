@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initScrollEffects();
     initCarousel();
+    initProductCards();
     initContactForm();
     initUploadForm();
     initSmoothScroll();
@@ -213,6 +214,32 @@ document.addEventListener('DOMContentLoaded', function() {
     initStatsCounter();
     initTrabalheConosco();
 });
+
+// ===========================
+// CARDS DE PRODUTOS INTERATIVOS (FLIP CARDS)
+// ===========================
+function initProductCards() {
+    const productCards = document.querySelectorAll('.servico__card[data-produto]');
+    
+    // Detectar se é mobile/touch device
+    const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    
+    if (isMobile) {
+        // Mobile: usar click/tap para virar
+        productCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Remover flip de outros cards
+                productCards.forEach(c => {
+                    if (c !== this) c.classList.remove('flipped');
+                });
+                // Toggle no card clicado
+                this.classList.toggle('flipped');
+            });
+        });
+    }
+    // Desktop: o hover é controlado por CSS (@media hover: hover)
+}
 
 // ===========================
 // MENU LATERAL ESQUERDO (SIDEBAR)
@@ -531,6 +558,12 @@ function initContactForm() {
         e.preventDefault();
 
         const formData = new FormData(contactForm);
+        // Garantir que o CSRF token está incluído
+        const csrfToken = contactForm.querySelector('input[name="csrf_token"]');
+        if (csrfToken && !formData.has('csrf_token')) {
+            formData.append('csrf_token', csrfToken.value);
+        }
+        
         const submitButton = contactForm.querySelector('.form__button');
 
         // Desabilitar botão durante envio
@@ -944,6 +977,12 @@ function initTrabalheConosco() {
         formData.append('telefone', telefone);
         formData.append('resumo', resumo);
         formData.append('curriculo', curriculo);
+        
+        // Adicionar CSRF token
+        const csrfToken = form.querySelector('input[name="csrf_token"]');
+        if (csrfToken) {
+            formData.append('csrf_token', csrfToken.value);
+        }
 
         // Desabilitar botão e mostrar loading
         const submitBtn = form.querySelector('button[type="submit"]');

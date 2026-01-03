@@ -67,11 +67,40 @@ body {
     font-size: var(--font-size-base);
     color: var(--text-color);
     background-color: var(--bg-pattern);
-    background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(217, 119, 6, 0.03) 35px, rgba(217, 119, 6, 0.03) 70px),
-        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(120, 53, 15, 0.02) 35px, rgba(120, 53, 15, 0.02) 70px);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* ===========================
+   BACKGROUND ANIMADO
+   =========================== */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('../images/background-pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(2px) brightness(1.2);
+    opacity: 0.5;
+    animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.05) translateY(-10px);
+        opacity: 0.55;
+    }
 }
 
 img {
@@ -442,12 +471,57 @@ button {
     transform: translateY(-2px);
 }
 
+/* Logo Icon Wrapper com Coroa de Trigo */
+.logo-icon-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wheat-wreath {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 1;
+    transition: all var(--transition-slow);
+    animation: wheatPulse 3s ease-in-out infinite;
+    filter: drop-shadow(0 3px 6px rgba(217, 119, 6, 0.35));
+}
+
+@keyframes wheatPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: 1;
+    }
+}
+
+.nav__logo:hover .wheat-wreath {
+    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 1;
+    filter: drop-shadow(0 6px 12px rgba(217, 119, 6, 0.5));
+}
+
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     color: var(--primary-color);
     flex-shrink: 0;
     transition: all var(--transition-base);
+    position: relative;
+    z-index: 1;
+    opacity: 0.4;
 }
 
 .nav__logo:hover .logo-icon {
@@ -1046,17 +1120,116 @@ button {
 }
 
 .servico__card {
+    background: transparent;
+    perspective: 1000px;
+    height: 450px;
+    cursor: pointer;
+}
+
+.servico__card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Hover para desktop */
+@media (hover: hover) and (pointer: fine) {
+    .servico__card[data-produto]:hover .servico__card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Click/tap para mobile */
+@media (hover: none) or (pointer: coarse) {
+    .servico__card[data-produto].flipped .servico__card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.servico__card-front,
+.servico__card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     background: var(--bg-color);
     padding: 2rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
 }
 
-.servico__card:hover {
-    transform: translateY(-10px);
+.servico__card-front {
+    z-index: 2;
+    transition: box-shadow var(--transition-base);
+}
+
+.servico__card:hover .servico__card-front {
     box-shadow: var(--shadow-xl);
+}
+
+.servico__card-back {
+    transform: rotateY(180deg);
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1;
+}
+
+.servico__image {
+    width: 100%;
+    height: calc(100% - 60px);
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.servico__back-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-md);
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.servico__hint {
+    display: block;
+    margin-top: auto;
+    font-size: var(--font-size-sm);
+    color: var(--primary-color);
+    font-weight: 600;
+    opacity: 0.8;
+    padding-top: 0.5rem;
+}
+
+/* Responsividade mobile */
+@media (max-width: 768px) {
+    .servico__card {
+        height: 400px;
+    }
+    
+    .servico__card-front,
+    .servico__card-back {
+        padding: 1.5rem;
+    }
+    
+    .servico__hint {
+        font-size: 0.75rem;
+    }
 }
 
 .servico__icon {
@@ -1066,6 +1239,7 @@ button {
     color: white;
     border-radius: var(--radius-lg);
     margin-bottom: 1.5rem;
+    font-size: 2.5rem;
 }
 
 .servico__title {
@@ -1108,7 +1282,8 @@ button {
 .carousel__img {
     width: 100%;
     height: 500px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #f8f9fa;
 }
 
 .carousel__content {

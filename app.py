@@ -11,6 +11,7 @@ from flask_wtf import FlaskForm, CSRFProtect
 from flask_talisman import Talisman
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_mail import Mail, Message
 from wtforms import StringField, TextAreaField, FileField
 from wtforms.validators import DataRequired, Email, Length, ValidationError
 from werkzeug.utils import secure_filename
@@ -60,6 +61,16 @@ app.config['SESSION_COOKIE_SECURE'] = False  # True em produção HTTPS
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 
+# Configuração de Email
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'housealimentoss@gmail.com'
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD', '')
+app.config['MAIL_DEFAULT_SENDER'] = 'housealimentoss@gmail.com'
+app.config['MAIL_MAX_EMAILS'] = None
+app.config['MAIL_ASCII_ATTACHMENTS'] = False
+
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # ===========================
@@ -67,6 +78,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 # ===========================
 
 csrf = CSRFProtect(app)
+mail = Mail(app)
 
 limiter = Limiter(
     app=app,
@@ -119,10 +131,7 @@ class JobApplicationForm(FlaskForm):
         DataRequired(message='Email é obrigatório'),
         Email(message='Email inválido')
     ])
-    telefone = StringField('Telefone', validators=[
-        DataRequired(message='Telefone é obrigatório'),
-        validate_phone_format
-    ])
+    telefone = StringField('Telefone')
     resumo = TextAreaField('Resumo Profissional', validators=[
         DataRequired(message='Resumo é obrigatório'),
         Length(min=50, max=5000)
@@ -197,7 +206,32 @@ def contato():
                 r'\D', '', form.telefone.data) if form.telefone.data else ''
             mensagem = sanitize_text(form.mensagem.data)
 
-            logger.info(f"Contato - Nome: {nome}, Email: {email}")
+            # Enviar email
+            try:
+                msg = Message(
+                    subject=f"Formulário de Contato - {nome}",
+                    recipients=['housealimentoss@gmail.com'],
+                    reply_to=email,
+                    body=f"""
+Nova mensagem de contato recebida:
+
+Nome: {nome}
+Email: {email}
+Telefone: {telefone if telefone else 'Não informado'}
+
+Mensagem:
+{mensagem}
+
+---
+Enviado via formulário de contato do site HOUSE Alimentos
+Data/Hora: {datetime.now().strftime('%d/%m/%Y às %H:%M')}
+"""
+                )
+                mail.send(msg)
+                logger.info(f"Email enviado - Contato de {nome} ({email})")
+            except Exception as email_error:
+                logger.error(f"Erro ao enviar email: {str(email_error)}")
+                # Continua mesmo se o email falhar
 
             return jsonify({
                 'success': True,
@@ -231,17 +265,59 @@ def trabalhe_conosco():
         if form.validate_on_submit():
             nome = sanitize_text(form.nome.data)
             email = form.email.data.strip().lower()
-            telefone = re.sub(r'\D', '', form.telefone.data)
+            telefone = re.sub(
+                r'\D', '', form.telefone.data) if form.telefone.data else ''
             resumo = sanitize_text(form.resumo.data)
 
             file = request.files.get('curriculo')
             success, message, filename = secure_file_upload(file)
 
             if not success:
+                logger.error(f"Erro upload: {message}")
                 return jsonify({
                     'success': False,
                     'message': message
                 }), 400
+
+            # Enviar email com anexo
+            try:
+                msg = Message(
+                    subject=f"Candidatos vagas - {nome}",
+                    recipients=['housealimentoss@gmail.com'],
+                    reply_to=email,
+                    body=f"""
+Nova candidatura recebida:
+
+Nome: {nome}
+Email: {email}
+Telefone: {telefone if telefone else 'Não informado'}
+
+Resumo/Apresentação:
+{resumo}
+
+---
+Currículo anexado: {filename}
+Enviado via formulário Trabalhe Conosco do site HOUSE Alimentos
+Data/Hora: {datetime.now().strftime('%d/%m/%Y às %H:%M')}
+"""
+                )
+
+                # Anexar arquivo PDF
+                if filename:
+                    file_path = os.path.join(
+                        app.config['UPLOAD_FOLDER'], filename)
+                    with open(file_path, 'rb') as f:
+                        msg.attach(filename, 'application/pdf', f.read())
+
+                mail.send(msg)
+                logger.info(f"Email enviado - Candidatura de {nome} ({email})")
+            except Exception as email_error:
+                logger.error(f"Erro ao enviar email: {str(email_error)}")
+                # Retorna sucesso mesmo se email falhar, pois arquivo foi salvo
+                return jsonify({
+                    'success': True,
+                    'message': 'Candidatura recebida! (Email pendente)'
+                }), 200
 
             logger.info(
                 f"Candidatura - Nome: {nome}, Email: {email}, Arquivo: {filename}")
@@ -255,6 +331,7 @@ def trabalhe_conosco():
             for field, field_errors in form.errors.items():
                 errors.extend(field_errors)
 
+            logger.error(f"Validação falhou: {form.errors}")
             return jsonify({
                 'success': False,
                 'message': 'Erro na validação',
@@ -263,6 +340,8 @@ def trabalhe_conosco():
 
     except Exception as e:
         logger.error(f"Erro trabalhe conosco: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
         return jsonify({
             'success': False,
             'message': 'Erro ao processar candidatura'
