@@ -17,3 +17,6 @@ email-validator==2.1.0
 
 # Utilitários
 Pillow==10.1.0
+
+# Servidor WSGI
+gunicorn==21.2.0
