@@ -24,9 +24,14 @@ Start-Sleep -Seconds 4
 # Testar Flask
 try {
     $response = Invoke-WebRequest -Uri "http://localhost:5000" -UseBasicParsing -TimeoutSec 3
-    Write-Host "✅ Flask rodando!" -ForegroundColor Green
+    if ($response.StatusCode -eq 200) {
+        Write-Host "✅ Flask rodando! (HTTP $($response.StatusCode))" -ForegroundColor Green
+    } else {
+        Write-Host "⚠️  Flask respondeu com código: $($response.StatusCode)" -ForegroundColor Yellow
+    }
 } catch {
     Write-Host "❌ Flask não respondeu!" -ForegroundColor Red
+    Write-Host "Erro: $($_.Exception.Message)" -ForegroundColor Red
     Stop-Job -Job $flaskJob -ErrorAction SilentlyContinue
     Remove-Job -Job $flaskJob -ErrorAction SilentlyContinue
     exit 1
