@@ -48,6 +48,11 @@ ngrok.exe
 ngrok.log
 ngrok.yml
 
+# Cloudflare
+cloudflared.exe
+*.pem
+.cloudflared/
+
 # Security
 *.key
 *.pem
