@@ -912,6 +912,13 @@ function initTrabalheConosco() {
 
     if (!form || !fileInput) return;
 
+    // Prevenir múltiplas inicializações
+    if (form.dataset.initialized === 'true') return;
+    form.dataset.initialized = 'true';
+
+    // Flag para prevenir múltiplos submits simultâneos
+    let isSubmitting = false;
+
     // Mostrar nome do arquivo selecionado
     fileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -945,6 +952,12 @@ function initTrabalheConosco() {
     // Submeter formulário
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Prevenir múltiplos submits simultâneos
+        if (isSubmitting) {
+            console.warn('Formulário já está sendo enviado...');
+            return;
+        }
 
         // Validar campos obrigatórios
         const nome = document.getElementById('candidato-nome').value.trim();
@@ -984,7 +997,8 @@ function initTrabalheConosco() {
             formData.append('csrf_token', csrfToken.value);
         }
 
-        // Desabilitar botão e mostrar loading
+        // Marcar como enviando e desabilitar botão
+        isSubmitting = true;
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
@@ -1012,9 +1026,13 @@ function initTrabalheConosco() {
         } catch (error) {
             showFeedback(feedback, 'Erro ao enviar candidatura. Tente novamente.', 'error');
             console.error('Erro:', error);
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
+        } fi// Reabilitar após 2 segundos para evitar spam
+            setTimeout(() => {
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.classList.remove('loading');
+            }, 2000;
             submitBtn.classList.remove('loading');
         }
     });
