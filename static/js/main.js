@@ -96,27 +96,47 @@ function initHeroCarousel() {
         }
     }
 
-    // Event listeners para setas
+    // Event listeners para setas (desktop + mobile)
     if (prevButton) {
-        prevButton.addEventListener('click', () => {
+        // Suporte click + touch
+        prevButton.addEventListener('click', (e) => {
+            e.preventDefault();
             prevSlide();
-            startAutoplay(); // Reiniciar autoplay após ação manual
+            startAutoplay();
         });
+        prevButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            prevSlide();
+            startAutoplay();
+        }, { passive: false });
     }
 
     if (nextButton) {
-        nextButton.addEventListener('click', () => {
+        // Suporte click + touch
+        nextButton.addEventListener('click', (e) => {
+            e.preventDefault();
             nextSlide();
-            startAutoplay(); // Reiniciar autoplay após ação manual
+            startAutoplay();
         });
+        nextButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            nextSlide();
+            startAutoplay();
+        }, { passive: false });
     }
 
-    // Event listeners para indicadores
+    // Event listeners para indicadores (desktop + mobile)
     indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
+        indicator.addEventListener('click', (e) => {
+            e.preventDefault();
             goToSlide(index);
-            startAutoplay(); // Reiniciar autoplay após ação manual
+            startAutoplay();
         });
+        indicator.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            goToSlide(index);
+            startAutoplay();
+        }, { passive: false });
     });
 
     // Pausar ao passar o mouse
@@ -253,13 +273,25 @@ function initSidebar() {
 
     if (!hamburger || !sidebar) return;
 
-    // Abrir sidebar
-    hamburger.addEventListener('click', () => {
+    // Abrir sidebar (desktop + mobile)
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         sidebar.classList.add('show');
         sidebarOverlay.classList.add('show');
         hamburger.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevenir scroll do body
+        document.body.style.overflow = 'hidden';
     });
+    
+    // Suporte touch para mobile
+    hamburger.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        sidebar.classList.add('show');
+        sidebarOverlay.classList.add('show');
+        hamburger.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }, { passive: false });
 
     // Fechar sidebar
     const closeSidebar = () => {
@@ -269,14 +301,28 @@ function initSidebar() {
         document.body.style.overflow = ''; // Restaurar scroll do body
     };
 
-    // Fechar ao clicar no botão X
+    // Fechar ao clicar no botão X (desktop + mobile)
     if (sidebarClose) {
-        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeSidebar();
+        });
+        sidebarClose.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            closeSidebar();
+        }, { passive: false });
     }
 
-    // Fechar ao clicar no overlay
+    // Fechar ao clicar no overlay (desktop + mobile)
     if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeSidebar();
+        });
+        sidebarOverlay.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            closeSidebar();
+        }, { passive: false });
     }
 
     // Fechar ao pressionar ESC
@@ -436,18 +482,7 @@ function initCarousel() {
     // Criar indicadores
     createIndicators(indicatorsContainer, totalSlides);
 
-    // Event listeners para botões
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            changeSlide(-1);
-        });
-    }
-
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            changeSlide(1);
-        });
-    }
+    // Event listeners para botões (desktop + mobile)\n    if (prevButton) {\n        prevButton.addEventListener('click', (e) => {\n            e.preventDefault();\n            changeSlide(-1);\n        });\n        prevButton.addEventListener('touchend', (e) => {\n            e.preventDefault();\n            changeSlide(-1);\n        }, { passive: false });\n    }\n\n    if (nextButton) {\n        nextButton.addEventListener('click', (e) => {\n            e.preventDefault();\n            changeSlide(1);\n        });\n        nextButton.addEventListener('touchend', (e) => {\n            e.preventDefault();\n            changeSlide(1);\n        }, { passive: false });\n    }
 
     // Auto-play do carrossel
     let autoplayInterval = setInterval(() => {
@@ -1026,14 +1061,14 @@ function initTrabalheConosco() {
         } catch (error) {
             showFeedback(feedback, 'Erro ao enviar candidatura. Tente novamente.', 'error');
             console.error('Erro:', error);
-        } fi// Reabilitar após 2 segundos para evitar spam
+        } finally {
+            // Reabilitar após 2 segundos para evitar spam
             setTimeout(() => {
                 isSubmitting = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 submitBtn.classList.remove('loading');
-            }, 2000;
-            submitBtn.classList.remove('loading');
+            }, 2000);
         }
     });
 }
