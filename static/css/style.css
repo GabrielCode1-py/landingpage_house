@@ -1084,6 +1084,8 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
+    justify-items: center;
+    align-items: center;
 }
 
 .sobre__stat {
@@ -1282,8 +1284,11 @@ button {
 .carousel__img {
     width: 100%;
     height: 500px;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     background: #f8f9fa;
+    display: block;
+    margin: 0 auto;
 }
 
 .carousel__content {
@@ -1311,7 +1316,7 @@ button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     color: var(--text-color);
     width: 3rem;
     height: 3rem;
@@ -1323,6 +1328,8 @@ button {
     cursor: pointer;
     transition: all var(--transition-fast);
     z-index: 10;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .carousel__button:hover {
@@ -1370,6 +1377,7 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    align-items: start;
 }
 
 .contato__info-title {
@@ -1549,6 +1557,8 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    justify-items: start;
+    align-items: start;
 }
 
 .footer__title {
@@ -1857,6 +1867,13 @@ button {
     .hero-carousel__buttons {
         flex-direction: column;
         gap: 0.75rem;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .hero-carousel__buttons .button {
+        width: 100%;
     }
     
     .hero-carousel__arrow {
@@ -2050,6 +2067,13 @@ button {
     align-items: start;
 }
 
+@media screen and (max-width: 968px) {
+    .trabalhe-conosco__container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 .trabalhe-conosco__info {
     position: sticky;
     top: calc(var(--header-height) + 2rem);
@@ -2106,6 +2130,8 @@ button {
     padding: 2.5rem;
     border-radius: 1rem;
     border: 1px solid var(--border-color);
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 /* File Input Styling */
