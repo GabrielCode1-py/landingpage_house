@@ -1,0 +1,11 @@
+# Robots.txt para HOUSE Alimentos
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://www.seu-dominio.com.br/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

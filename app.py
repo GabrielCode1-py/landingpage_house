@@ -6,7 +6,7 @@ Desenvolvido para exposição pública via ngrok com domínio customizado
 Inclui múltiplas camadas de segurança e boas práticas
 """
 
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory
 from flask_wtf import FlaskForm, CSRFProtect
 from flask_talisman import Talisman
 from flask_limiter import Limiter
@@ -413,6 +413,22 @@ def set_security_headers(response):
         response.headers['Cache-Control'] = 'no-store'
 
     return response
+
+# ===========================
+# ROTAS SEO
+# ===========================
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    """Sitemap XML para SEO"""
+    return send_from_directory('static', 'sitemap.xml', mimetype='application/xml')
+
+
+@app.route('/robots.txt')
+def robots():
+    """Robots.txt para crawlers"""
+    return send_from_directory('static', 'robots.txt', mimetype='text/plain')
 
 # ===========================
 # EXECUÇÃO
