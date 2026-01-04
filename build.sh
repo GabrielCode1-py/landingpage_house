@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
-# Render.com build script
+#!/bin/bash
+set -e
 
-echo "🚀 Instalando dependências..."
+echo "Installing dependencies..."
 pip install --upgrade pip
 pip install -r requirements-render.txt
 
-echo "✅ Build concluído!"
+echo "Build completed successfully!"
