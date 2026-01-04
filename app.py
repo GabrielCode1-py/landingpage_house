@@ -133,8 +133,8 @@ class JobApplicationForm(FlaskForm):
     ])
     telefone = StringField('Telefone')
     resumo = TextAreaField('Resumo Profissional', validators=[
-        DataRequired(message='Resumo é obrigatório'),
-        Length(min=50, max=5000)
+        DataRequired(message='Resumo é obrigatório (mínimo 20 caracteres)'),
+        Length(min=20, max=5000, message='Resumo deve ter entre 20 e 5000 caracteres')
     ])
     curriculo = FileField('Currículo PDF', validators=[
         DataRequired(message='Currículo é obrigatório')
