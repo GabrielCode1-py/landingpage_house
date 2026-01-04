@@ -1,0 +1,295 @@
+🚀 CHECKLIST DEPLOY PYTHONANYWHERE - HOUSE Alimentos
+═══════════════════════════════════════════════════════
+
+📅 Data: ___/___/2026
+👤 Username PythonAnywhere: _______________________
+🌐 URL do Site: https://_______.pythonanywhere.com
+
+═══════════════════════════════════════════════════════
+
+FASE 1: PREPARAÇÃO
+═══════════════════════════════════════════════════════
+
+[ ] 1.1 Conta criada no PythonAnywhere
+    URL: https://www.pythonanywhere.com/registration/register/beginner/
+    Username: _______________________
+    Email confirmado: [ ]
+
+[ ] 1.2 Login realizado com sucesso
+    Dashboard acessível: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 2: CONSOLE BASH E REPOSITÓRIO
+═══════════════════════════════════════════════════════
+
+[ ] 2.1 Console Bash aberto
+    Aba: Consoles → Bash
+
+[ ] 2.2 Repositório clonado
+    Comando: git clone https://github.com/GabrielCode1-py/landingpage_house.git
+    Pasta criada: ~/landingpage_house [ ]
+
+[ ] 2.3 Versão correta
+    Comando: cd ~/landingpage_house && git checkout v6.1.0
+    Tag v6.1.0 ativa: [ ]
+
+[ ] 2.4 Arquivos verificados
+    Comando: ls -la
+    Arquivo app.py presente: [ ]
+    Pasta static/ presente: [ ]
+    Pasta templates/ presente: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 3: AMBIENTE VIRTUAL
+═══════════════════════════════════════════════════════
+
+[ ] 3.1 Virtual environment criado
+    Comando: mkvirtualenv --python=/usr/bin/python3.10 house-env
+    Prompt mostra (house-env): [ ]
+
+[ ] 3.2 Pip atualizado
+    Comando: pip install --upgrade pip
+    Versão mais recente: [ ]
+
+[ ] 3.3 Dependências instaladas
+    Comando: cd ~/landingpage_house && pip install -r requirements.txt
+    Flask instalado: [ ]
+    Flask-WTF instalado: [ ]
+    Flask-Mail instalado: [ ]
+    Tempo de instalação: ~_____ minutos
+
+[ ] 3.4 Verificação de instalação
+    Comando: pip show Flask
+    Versão 3.0.0 confirmada: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 4: VARIÁVEIS DE AMBIENTE (.env)
+═══════════════════════════════════════════════════════
+
+[ ] 4.1 Arquivo .env criado
+    Comando: cd ~/landingpage_house && nano .env
+
+[ ] 4.2 SECRET_KEY gerada
+    Comando: python3 -c "import secrets; print(secrets.token_hex(32))"
+    Chave copiada: [ ]
+    Chave colada no .env: [ ]
+
+[ ] 4.3 Senha de App do Gmail gerada
+    URL: https://myaccount.google.com/apppasswords
+    Senha gerada: [ ]
+    Senha colada no .env como MAIL_PASSWORD: [ ]
+
+[ ] 4.4 Todas as variáveis configuradas
+    SECRET_KEY: [ ]
+    FLASK_ENV=production: [ ]
+    MAIL_SERVER=smtp.gmail.com: [ ]
+    MAIL_PORT=587: [ ]
+    MAIL_USERNAME=housealimentoss@gmail.com: [ ]
+    MAIL_PASSWORD=(senha de app): [ ]
+
+[ ] 4.5 Arquivo salvo
+    Ctrl+X → Y → Enter: [ ]
+
+[ ] 4.6 Arquivo verificado
+    Comando: cat .env
+    Conteúdo correto: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 5: WEB APP PYTHONANYWHERE
+═══════════════════════════════════════════════════════
+
+[ ] 5.1 Web App criado
+    Aba: Web → Add a new web app
+    Manual configuration selecionado: [ ]
+    Python 3.10 selecionado: [ ]
+
+[ ] 5.2 Source code configurado
+    Path: /home/_________/landingpage_house
+    (substituir _________ pelo username)
+    Salvo: [ ]
+
+[ ] 5.3 WSGI configurado
+    Arquivo: /var/www/_________pythonanywhere_com_wsgi.py
+    Conteúdo do template colado: [ ]
+    Username substituído na linha project_home: [ ]
+    Arquivo salvo: [ ]
+
+[ ] 5.4 Virtualenv configurado
+    Path: /home/_________/.virtualenvs/house-env
+    (substituir _________ pelo username)
+    Salvo: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 6: ARQUIVOS ESTÁTICOS
+═══════════════════════════════════════════════════════
+
+[ ] 6.1 Static files configurado
+    URL: /static/
+    Directory: /home/_________/landingpage_house/static/
+    (substituir _________ pelo username)
+    Salvo: [ ]
+
+[ ] 6.2 Pasta uploads criada
+    Comando: cd ~/landingpage_house && mkdir -p uploads && chmod 755 uploads
+    Pasta criada: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 7: RELOAD E TESTE
+═══════════════════════════════════════════════════════
+
+[ ] 7.1 Primeiro reload
+    Botão "Reload" clicado: [ ]
+    Tempo de espera: ~10-15 segundos
+
+[ ] 7.2 Site acessível
+    URL: https://_______.pythonanywhere.com
+    Página carrega: [ ]
+    Sem erro 502: [ ]
+    Sem erro 500: [ ]
+
+[ ] 7.3 Elementos visuais OK
+    Hero carousel visível: [ ]
+    Menu lateral funciona: [ ]
+    Imagens carregando: [ ]
+    CSS aplicado: [ ]
+    Background animado: [ ]
+
+[ ] 7.4 Seções funcionando
+    Seção "Sobre" OK: [ ]
+    Seção "Serviços" OK: [ ]
+    Seção "Portfolio" OK: [ ]
+    Seção "Trabalhe Conosco" OK: [ ]
+    Seção "Contato" OK: [ ]
+
+[ ] 7.5 Formulários testados
+    Formulário de contato:
+      - Preencher campos: [ ]
+      - Enviar: [ ]
+      - Mensagem de sucesso: [ ]
+      - Email recebido: [ ]
+    
+    Formulário Trabalhe Conosco:
+      - Preencher campos: [ ]
+      - Upload PDF: [ ]
+      - Enviar: [ ]
+      - Mensagem de sucesso: [ ]
+      - Email recebido: [ ]
+
+[ ] 7.6 Responsividade testada
+    Desktop (1920px): [ ]
+    Tablet (768px): [ ]
+    Mobile (375px): [ ]
+
+[ ] 7.7 Cookie banner testado
+    Banner aparece: [ ]
+    Botão "Aceitar" funciona: [ ]
+    Modal de configurações funciona: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 8: LOGS E MONITORAMENTO
+═══════════════════════════════════════════════════════
+
+[ ] 8.1 Error log verificado
+    Web → Log files → Error log
+    Sem erros críticos: [ ]
+
+[ ] 8.2 Server log verificado
+    Web → Log files → Server log
+    Requests registrados: [ ]
+
+[ ] 8.3 Access log verificado
+    Web → Log files → Access log
+    Acessos registrados: [ ]
+
+═══════════════════════════════════════════════════════
+
+FASE 9: FINALIZAÇÃO E DOCUMENTAÇÃO
+═══════════════════════════════════════════════════════
+
+[ ] 9.1 URL do site anotada
+    https://_______.pythonanywhere.com
+
+[ ] 9.2 Credenciais salvas
+    Username PythonAnywhere: [ ]
+    Senha segura anotada: [ ]
+    Email de cadastro: [ ]
+
+[ ] 9.3 Backup das senhas
+    SECRET_KEY salva em local seguro: [ ]
+    MAIL_PASSWORD (senha de app) salva: [ ]
+
+[ ] 9.4 Teste final completo
+    Todos os 7.5 itens OK: [ ]
+
+═══════════════════════════════════════════════════════
+
+✅ DEPLOY CONCLUÍDO COM SUCESSO!
+═══════════════════════════════════════════════════════
+
+Data de conclusão: ___/___/2026 às ___:___
+Tempo total: _______ minutos
+
+URL do site: https://_______.pythonanywhere.com
+
+Próximos passos:
+[ ] Compartilhar URL nas redes sociais
+[ ] Adicionar ao Google Search Console
+[ ] Configurar Google Analytics (opcional)
+[ ] Monitorar acessos diariamente
+[ ] Backup semanal do .env
+
+═══════════════════════════════════════════════════════
+
+COMANDOS ÚTEIS PARA O FUTURO
+═══════════════════════════════════════════════════════
+
+Atualizar o site:
+  cd ~/landingpage_house
+  workon house-env
+  git pull origin master
+  pip install -r requirements.txt
+  # Depois: Web → Reload
+
+Ver logs de erro:
+  Web → Log files → Error log
+
+Recriar ambiente virtual:
+  rmvirtualenv house-env
+  mkvirtualenv --python=/usr/bin/python3.10 house-env
+  cd ~/landingpage_house
+  pip install -r requirements.txt
+  # Depois: Web → Virtualenv → reconfigurar path
+
+Testar localmente:
+  cd ~/landingpage_house
+  workon house-env
+  python app.py
+
+═══════════════════════════════════════════════════════
+
+CONTATOS DE SUPORTE
+═══════════════════════════════════════════════════════
+
+PythonAnywhere:
+  - Help: https://help.pythonanywhere.com/
+  - Forum: https://www.pythonanywhere.com/forums/
+
+Projeto HOUSE Alimentos:
+  - GitHub: https://github.com/GabrielCode1-py/landingpage_house
+  - Issues: https://github.com/GabrielCode1-py/landingpage_house/issues
+  - Email: housealimentoss@gmail.com
+
+═══════════════════════════════════════════════════════
+
+Desenvolvido por: Gabriel Code
+Versão: v6.1.0
+Data: 03/01/2026
+
+🎉 BOA SORTE COM SEU DEPLOY! 🎉
