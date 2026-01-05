@@ -46,6 +46,10 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Detectar ambiente (Railway/Render/Heroku ou local)
+IS_PRODUCTION = os.getenv('RAILWAY_ENVIRONMENT') or os.getenv(
+    'RENDER') or os.getenv('DYNO')
+
 # Configurações de segurança
 app.config['SECRET_KEY'] = os.getenv(
     'SECRET_KEY', 'fallback-secret-key-change-in-production')
@@ -56,8 +60,8 @@ app.config['ALLOWED_EXTENSIONS'] = set(
     os.getenv('ALLOWED_EXTENSIONS', 'pdf').split(','))
 app.config['WTF_CSRF_TIME_LIMIT'] = None
 
-# Cookies seguros
-app.config['SESSION_COOKIE_SECURE'] = False  # True em produção HTTPS
+# Cookies seguros (ativa HTTPS em produção)
+app.config['SESSION_COOKIE_SECURE'] = bool(IS_PRODUCTION)
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 
