@@ -1,0 +1,2 @@
+# Substitua este arquivo por sua logo oficial em formato PNG, JPG ou SVG.
+# Exemplo de uso: <img src="{{ url_for('static', filename='images/logo-house.png') }}" alt="Logo House Alimentos">

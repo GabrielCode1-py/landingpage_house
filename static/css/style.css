@@ -472,61 +472,23 @@ button {
 }
 
 /* Logo Icon Wrapper com Coroa de Trigo */
+
 .logo-icon-wrapper {
-    position: relative;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.wheat-wreath {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    opacity: 1;
-    transition: all var(--transition-slow);
-    animation: wheatPulse 3s ease-in-out infinite;
-    filter: drop-shadow(0 3px 6px rgba(217, 119, 6, 0.35));
-}
-
-@keyframes wheatPulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.08);
-        opacity: 1;
-    }
-}
-
-.nav__logo:hover .wheat-wreath {
-    transform: translate(-50%, -50%) scale(1.12);
-    opacity: 1;
-    filter: drop-shadow(0 6px 12px rgba(217, 119, 6, 0.5));
-}
-
-.logo-icon {
-    width: 20px;
-    height: 20px;
-    color: var(--primary-color);
-    flex-shrink: 0;
-    transition: all var(--transition-base);
-    position: relative;
-    z-index: 1;
-    opacity: 0.5;
-}
-
-.nav__logo:hover .logo-icon {
-    color: var(--primary-dark);
-    transform: scale(1.05);
+.logo-house {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
 }
 
 .logo-content {

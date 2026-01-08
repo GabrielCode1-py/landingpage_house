@@ -4,6 +4,7 @@ Allow: /
 Disallow: /uploads/
 Disallow: /admin/
 
+
 # Sitemap
 Sitemap: https://www.seu-dominio.com.br/sitemap.xml
 

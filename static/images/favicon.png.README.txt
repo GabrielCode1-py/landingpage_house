@@ -1,0 +1,3 @@
+# Substitua este arquivo por sua logo em 32x32px ou 48x48px para favicon.
+# Exemplo de uso no HTML:
+# <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
