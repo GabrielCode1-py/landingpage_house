@@ -1100,3 +1100,146 @@ window.addEventListener('scroll', debounce(() => {
 }, 10));
 
 console.log('🚀 Landing Page carregada com sucesso!');
+document.querySelectorAll("a.nav__link").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const section = document.querySelector(link.getAttribute("href"));
+    section.scrollIntoView({ behavior: "smooth" });
+
+    document.querySelectorAll(".nav__link").forEach(n => n.classList.remove("active-link"));
+    link.classList.add("active-link");
+  });
+});
+function initHeroCarousel() {
+    const carousel = document.querySelector('.hero__carousel');
+    const slides = carousel.querySelectorAll('.hero__slide');
+    const indicatorsContainer = carousel.querySelector('.hero__indicators');
+    let currentSlide = 0;
+    let autoplayInterval;
+
+    // Criar indicadores
+    slides.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('hero__indicator');
+        if (index === 0) indicator.classList.add('active');
+        
+        indicator.addEventListener('click', () => {
+            goToSlide(index);
+        });
+
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        indicatorsContainer.children[currentSlide].classList.remove('active');
+        
+        currentSlide = index;
+        
+        slides[currentSlide].classList.add('active');
+        indicatorsContainer.children[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        let nextIndex = currentSlide + 1;
+        if (nextIndex >= slides.length) {
+            nextIndex = 0;
+        }
+        goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        let prevIndex = currentSlide - 1;
+        if (prevIndex < 0) {
+            prevIndex = slides.length - 1;
+        }
+        goToSlide(prevIndex);
+    }
+
+    function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+            nextSlide();
+        }, 4000);
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+
+    // Navegação por teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+            stopAutoplay();
+            startAutoplay();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+            stopAutoplay();
+            startAutoplay();
+        }
+    });
+
+    // Lazy loading das imagens
+    const images = carousel.querySelectorAll('img[data-src]');
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.getAttribute('data-src');
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback para navegadores sem suporte
+        images.forEach(img => {
+            img.src = img.getAttribute('data-src');
+            img.removeAttribute('data-src');
+        });
+    }
+
+    // Iniciar autoplay
+    startAutoplay();
+
+    // Pausar autoplay ao interagir
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+}
+
+// Inicializar o carrossel quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', initHeroCarousel);
+
+// ===========================
+// CARTÕES DE PRODUTOS - FLIP
+// ===========================
+function initProductCards() {
+    const productCards = document.querySelectorAll('.produto__card');
+
+    // Detectar se é um dispositivo móvel ou desktop
+    // Usar touch events para dispositivos móveis e hover para desktop
+    // Verificar se o dispositivo suporta touch para diferenciar mobile/desktop
+    // Isso evita problemas em laptops com tela touch que também usam mouse como dispositivo de entrada
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    productCards.forEach(card => {
+        if (isTouchDevice) {
+            // Mobile: usar touch events
+            card.addEventListener('touchstart', () => {
+                card.classList.add('flipped');
+            });
+
+            card.addEventListener('touchend', () => {
+                card.classList.remove('flipped');
+            });
+        } else {
+            // Desktop: usar hover (CSS)
+            // Nenhum evento JS necessário
+        }
+    });
+} 
